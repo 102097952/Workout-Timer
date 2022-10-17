@@ -116,7 +116,7 @@ public class EditWorkout extends AppCompatActivity {
         }
     };
 
-    // start exercise
+    // save exercise
     View.OnClickListener saveClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -166,6 +166,7 @@ public class EditWorkout extends AppCompatActivity {
         }
     }
 
+    // display list of exercises of current workout
     class RowIconAdapter extends ArrayAdapter<Exercise> {
         private ArrayList<Exercise> workoutList;
         public RowIconAdapter(Context c, int rowResourceId, int textViewResourceId, ArrayList<Exercise> items) {
@@ -195,6 +196,7 @@ public class EditWorkout extends AppCompatActivity {
         }
     }
 
+    // return string of readable exercise data
     private String getData(Exercise exercise) {
         String text = "";
         if(exercise.getTimer() > 0) {
