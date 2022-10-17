@@ -73,7 +73,7 @@ public class EditExercise extends AppCompatActivity {
         }
     };
 
-    // start exercise
+    // save exercise
     View.OnClickListener saveClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -81,6 +81,7 @@ public class EditExercise extends AppCompatActivity {
         }
     };
 
+    // prompts and un-prompts user to enter exercise information
     View.OnClickListener timerClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -146,7 +147,7 @@ public class EditExercise extends AppCompatActivity {
         }
     };
 
-    //
+    // prompt to delete current exercise
     private void DeleteMessage() {
         AlertDialog.Builder builder = new AlertDialog.Builder(EditExercise.this);
         builder.setMessage("Do you want to delete? This action cannot be undone.");
