@@ -138,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // display list of workouts
     class RowIconAdapter extends ArrayAdapter<String> {
         private ArrayList<String> workoutList;
         public RowIconAdapter(Context c, int rowResourceId, int textViewResourceId, ArrayList<String> items) {
@@ -166,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+    // load in all the workouts saved to the device
     private void LoadFiles(){
         File directory = new File(getFilesDir().toString());
         File[] workoutFiles = directory.listFiles();

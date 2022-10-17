@@ -161,6 +161,7 @@ public class ViewWorkout extends AppCompatActivity {
         }
     }
 
+    // display list of exercises from selected workout
     class RowIconAdapter extends ArrayAdapter<Exercise> {
         private ArrayList<Exercise> workoutList;
         public RowIconAdapter(Context c, int rowResourceId, int textViewResourceId, ArrayList<Exercise> items) {
@@ -190,6 +191,7 @@ public class ViewWorkout extends AppCompatActivity {
         }
     }
 
+    // converts exercise data to readable text
     private String getData(Exercise exercise) {
         String text = "";
         if(exercise.getTimer() > 0) {
@@ -264,6 +266,7 @@ public class ViewWorkout extends AppCompatActivity {
         return totalTime * 60000;
     }
 
+    // goto edit workout intent
     private void EditWorkout(){
         Intent intent = new Intent(this, EditWorkout.class);
         intent.putExtra("WORKOUT", workout);
@@ -271,6 +274,7 @@ public class ViewWorkout extends AppCompatActivity {
         startActivityForResult(intent, 0);
     }
 
+    // prompt to delete workout
     private void DeleteMessage() {
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewWorkout.this);
         builder.setMessage("Do you want to delete? This action cannot be undone.");

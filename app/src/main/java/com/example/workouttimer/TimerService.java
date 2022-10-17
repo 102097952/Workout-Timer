@@ -74,27 +74,32 @@ public class TimerService extends Service {
         }
     }
 
+    // workout timer loop
     public void runWorkout(){
         final Runnable runnable = new Runnable() {
             @Override
             public void run() {
                 if(mProgress >= mMaxValue ){
+                    // workout is complete
                     Log.d("TIMER", "Workout complete! Well done!");
                     sendCompleteNotification(name);
                     mHandler.removeCallbacks(this);
                     pauseWorkout();
                 }
                 else if(mIsPaused){
+                    // workout is paused
                     Log.d("TIMER", "Paused");
                     mHandler.removeCallbacks(this);
                     pauseWorkout();
                 }
                 else if (mProgress >= mCheckPointTimes.get(mCurrIndex)) {
+                    // current exercise is complete, wait to start next exercise
                     sendProgressNotification(name, mCheckPointNames.get(mCurrIndex) + " is complete!");
                     Log.d("TIMER", mCheckPointNames.get(mCurrIndex) + " finished");
                     mCurrIndex++;
                     pauseWorkout();
                 } else {
+                    // workout is currently underway
                     mProgress += 100;
                     Log.d("TIMER", "Progress: "+ mProgress);
                     mHandler.postDelayed(this, 100);
@@ -208,6 +213,7 @@ public class TimerService extends Service {
         notificationManager.notify(2, notification);
     }
 
+    // resume workout from notification prompt
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
